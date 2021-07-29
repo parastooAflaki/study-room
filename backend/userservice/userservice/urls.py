@@ -20,6 +20,7 @@ from  user import views
 
 urlpatterns = [
     path('users/signup', views.sign_up),
+    path('users/login' , views.log_in),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
 ]
