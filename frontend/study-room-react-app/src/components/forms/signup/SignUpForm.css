@@ -14,35 +14,3 @@
   opacity: 1;
   z-index: 5;
 }
-.password-container {
-  position: relative;
-  width: 100%;
-  margin: 8px 0;
-}
-.password-eye {
-  position: absolute;
-  color: var(--color-text-primary);
-  width: 20px;
-  height: 20px;
-  right: 10px;
-  top: 30%;
-}
-.password-input {
-  width: 100%;
-}
-.text-input {
-  margin: 8px 0;
-  width: 100%;
-}
-input {
-  background-color: #eee;
-  border: none;
-  padding: 12px 15px;
-}
-.row-input {
-  display: flex;
-  justify-content: space-be;
-}
-.row-input-inner {
-  margin-right: 8px;
-}

@@ -6,7 +6,7 @@ import HomePage from "../pages/home/HomePage";
 
 function App() {
   return (
-    <div className="theme-light">
+    <div className="theme-light app">
       <Router>
         <Switch>
           <Route path="/auth">

@@ -1,7 +1,17 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
 
-body {
-  background: #f6f5f7;
+.theme-light {
+  --color-text-primary: rgb(73, 73, 73);
+  --color-text-secondary: rgb(255, 255, 255);
+  --color-primary-bg: #f1eeee;
+  --color-primary: #ffffff;
+  --color-secondary: #ff4b2b;
+  --color-secondary-grad: #ff416c;
+  --color-input: #eee;
+  --color-text-link: #333;
+}
+.app {
+  background: var(--color-primary);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,9 +19,8 @@ body {
   font-family: "Montserrat", sans-serif;
   height: 100vh;
   width: 100vw;
+  color: var(--color-text-primary);
 }
-.theme-light {
-  --color-text-primary: rgb(68, 68, 68);
-  --color-secondary: #ff4b2b;
-  --color-secondary-grad: #ff416c;
+body {
+  margin: 0;
 }
