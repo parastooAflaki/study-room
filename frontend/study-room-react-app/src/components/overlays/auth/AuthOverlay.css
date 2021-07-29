@@ -14,12 +14,17 @@
 }
 
 .auth-overlay {
-  background: #ff416c;
-  background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
-  background: linear-gradient(to right, #ff4b2b, #ff416c);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 0 0;
+  background: var(--color-secondary);
+  background: -webkit-linear-gradient(
+    to right,
+    var(--color-secondary),
+    var(--color-secondary-grad)
+  );
+  background: linear-gradient(
+    to right,
+    var(--color-secondary),
+    var(--color-secondary-grad)
+  );
   color: #ffffff;
   position: relative;
   left: -100%;

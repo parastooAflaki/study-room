@@ -1,22 +1,26 @@
 import "./AuthOverlay.css";
-
+import SimpleButton from "../../buttons/SimpleButton";
 const AuthOverlay = (props) => {
   return (
     <div className="auth-overlay-container">
       <div className="auth-overlay">
         <div className="auth-overlay-panel auth-overlay-left">
-          <h1>Welcome Back!</h1>
-          <p>To keep connected with us please login with your personal info</p>
-          <button className="ghost" id="signIn" onClick={props.goRight}>
-            Sign In
-          </button>
+          <h1>Already have an account?</h1>
+          <p>Then let's login and study hard!</p>
+          <SimpleButton
+            ghost
+            text="Login to existing account"
+            onClick={props.goRight}
+          />
         </div>
         <div className="auth-overlay-panel auth-overlay-right">
-          <h1>Hello, Friend!</h1>
-          <p>Enter your personal details and start journey with us</p>
-          <button className="ghost" id="signUp" onClick={props.goLeft}>
-            Sign Up
-          </button>
+          <h1>New to StudyRoom?</h1>
+          <p>Come make an account real easy and fast!</p>
+          <SimpleButton
+            text="Create new account"
+            ghost
+            onClick={props.goLeft}
+          />
         </div>
       </div>
     </div>

@@ -1,15 +1,19 @@
 import "./LoginForm.css";
-
+import GradientDevider from "../../devider/GradientDevider";
+import SimpleInput from "../Inputs/SimpleInput";
+import PasswordInput from "../Inputs/PasswordInput";
+import SimpleButton from "../../buttons/SimpleButton";
 const LoginForm = (props) => {
   return (
     <div className="login-form-container">
       <form action="#">
-        <h1>Sign in</h1>
-        <span>or use your account</span>
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
+        <h1>Login</h1>
+        <GradientDevider />
+        <SimpleInput type="email" placeholder="Email" />
+        <PasswordInput placeholder="Password" />
         <a href="#">Forgot your password?</a>
-        <button>Sign In</button>
+        <GradientDevider />
+        <SimpleButton text="Login" />
       </form>
     </div>
   );

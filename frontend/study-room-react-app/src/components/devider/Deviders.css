@@ -1,0 +1,16 @@
+.gradient-devider {
+  margin: 20px 0 20px 0;
+  display: block;
+  border: none;
+  width: 100%;
+  height: 1px;
+  background: var(--color-secondary);
+  background: linear-gradient(
+    to right,
+    white,
+    var(--color-secondary-grad),
+    var(--color-secondary),
+    var(--color-secondary-grad),
+    white
+  );
+}

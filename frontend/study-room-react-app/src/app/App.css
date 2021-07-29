@@ -12,4 +12,6 @@ body {
 }
 .theme-light {
   --color-text-primary: rgb(68, 68, 68);
+  --color-secondary: #ff4b2b;
+  --color-secondary-grad: #ff416c;
 }

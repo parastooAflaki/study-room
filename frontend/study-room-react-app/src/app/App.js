@@ -6,16 +6,18 @@ import HomePage from "../pages/home/HomePage";
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/auth">
-          <AuthPage />
-        </Route>
-        <Route path="/">
-          <HomePage />
-        </Route>
-      </Switch>
-    </Router>
+    <div className="theme-light">
+      <Router>
+        <Switch>
+          <Route path="/auth">
+            <AuthPage />
+          </Route>
+          <Route path="/">
+            <HomePage />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }
 
