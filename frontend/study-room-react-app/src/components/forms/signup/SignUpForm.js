@@ -5,6 +5,7 @@ import PasswordInput from "../Inputs/PasswordInput";
 import SimpleInput from "../Inputs/SimpleInput";
 import InputHorizontalDevider from "../../devider/InputHorizontalDevider";
 import SimpleButton from "../../buttons/SimpleButton";
+import SnackBar from "../../snackbars/SnackBar";
 const SignUpForm = (props) => {
   const update = (form, e) => {
     props.setData(form, e.target.value);
