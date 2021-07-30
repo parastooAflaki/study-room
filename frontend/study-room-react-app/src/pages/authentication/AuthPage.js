@@ -22,24 +22,37 @@ const AuthPage = (props) => {
     loginData[field] = value;
     setLoginData({ ...loginData });
   };
-  const onSubmitSignUp = () => {};
+  const setSignupDataValue = (field, value) => {
+    signupData[field] = value;
+    setSignupData({ ...signupData });
+  };
+  const onSubmitSignUp = () => {
+    axios
+      .post("http://localhost:8000/users/signup", signupData)
+      .then((res) => alert(JSON.stringify(res.data)))
+      .catch((err) => alert(err));
+  };
   const onSubmitLogin = () => {
     loginUser(dispatch, {
       email: loginData.email,
+      user_name: loginData.email,
       password: loginData.password,
     })
       .then((response) => {
-        alert("AAAAAAAAAA " + response);
-        props.history.push("/");
+        if (response) {
+          alert("AAAAAAAAAA " + response);
+          props.history.push("/");
+        }
       })
       .catch((err) => console.error(err));
   };
+
   return (
     <div
       className={`auth-container ${isSigningUp ? "sign-up-active" : ""}`}
       id="container"
     >
-      <SignUpForm setData={setSignupData} onSubmit={onSubmitSignUp} />
+      <SignUpForm setData={setSignupDataValue} onSubmit={onSubmitSignUp} />
       <LoginForm setData={setLoginDataValue} onSubmit={onSubmitLogin} />
       <AuthOverlay goRight={closeSignUp} goLeft={openSignUp} />
     </div>
