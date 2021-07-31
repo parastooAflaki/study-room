@@ -44,14 +44,14 @@ class LogInSerializer(serializers.Serializer):
             user = User.objects.get(email= email)
         except User.DoesNotExist:
             raise serializers.ValidationError(
-                'User with given email does not exists'
+                {"email":'User with given email does not exists'}
             )
         retrieved_password = user.password
         pwd_valid = check_password(password, retrieved_password)
         if pwd_valid :
             return user
         raise serializers.ValidationError(
-            'Wrong password!'
+            {"password": 'Wrong password!'}
         )
 
     def validate(self , data):

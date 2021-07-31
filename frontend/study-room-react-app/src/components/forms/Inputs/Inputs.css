@@ -3,6 +3,12 @@
   width: 100%;
   margin: 8px 0;
 }
+.input-container {
+  position: relative;
+  width: 100%;
+
+  margin: 8px 0;
+}
 .password-eye {
   position: absolute;
   color: var(--color-text-primary);
@@ -15,7 +21,6 @@
   width: 100%;
 }
 .text-input {
-  margin: 8px 0;
   width: 100%;
 }
 input {
@@ -43,4 +48,31 @@ input::-ms-input-placeholder {
 }
 .row-input-inner {
   margin-right: 8px;
+}
+
+.input-error-tooltip {
+  position: absolute;
+  background: var(--color-primary);
+  color: var(--color-text-primary);
+  padding: 0.2em;
+  border-radius: 10px;
+  font-size: 0.7em;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: 5;
+  left: 0;
+  top: -0.8rem;
+  border: 1px solid #b85a5a;
+  box-shadow: 1px 2px 8px rgba(0, 0, 100, 0.2);
+  opacity: 1;
+  transition: ease-in;
+  width: 100%;
+  white-space: nowrap;
+}
+
+input.error {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #b85a5a;
+  background-color: #f3cfcf;
 }

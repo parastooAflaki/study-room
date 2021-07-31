@@ -11,14 +11,14 @@ export async function loginUser(dispatch, loginPayload) {
     let data = response.data;
     // if (data.user) {
     //   dispatch({ type: "LOGIN_SUCCESS", payload: data });
-    //   localStorage.setItem("currentUser", JSON.stringify(data));
+    localStorage.setItem("token", data);
     //   return data;
     // }
 
     return data;
   } catch (error) {
     dispatch({ type: "LOGIN_ERROR", error: error });
-    console.log(error);
+    throw error;
   }
 }
 
