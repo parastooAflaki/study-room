@@ -10,18 +10,26 @@
   --color-secondary-grad: #ff416c;
   --color-input: #eee;
   --color-text-link: #333;
+  --color-text-error: rgb(255, 255, 255);
+  --color-error-bg: rgb(185, 57, 57);
+  --color-text-success: rgb(255, 255, 255);
+  --color-success-bg: rgb(70, 114, 87);
 }
 
 .theme-light-skynight {
   --color-text-primary: rgb(73, 73, 73);
   --color-text-secondary: rgb(255, 255, 255);
   --color-text-placeholder: rgb(153, 153, 153);
+  --color-text-error: rgb(255, 255, 255);
   --color-primary-bg: #f1eeee;
   --color-primary: #ffffff;
   --color-secondary: #242a49;
   --color-secondary-grad: #457d80;
   --color-input: #eee;
   --color-text-link: #333;
+  --color-error-bg: rgb(185, 57, 57);
+  --color-text-success: rgb(255, 255, 255);
+  --color-success-bg: rgb(70, 114, 87);
 }
 .theme-dark-skynight {
   --color-text-primary: rgb(248, 248, 248);
@@ -33,6 +41,10 @@
   --color-secondary-grad: #f2fafa;
   --color-input: rgb(89, 95, 122);
   --color-text-link: rgb(211, 211, 211);
+  --color-text-error: rgb(255, 255, 255);
+  --color-error-bg: rgb(185, 57, 57);
+  --color-text-success: rgb(255, 255, 255);
+  --color-success-bg: rgb(70, 114, 87);
 }
 .app {
   background: var(--color-primary-bg);
@@ -44,6 +56,20 @@
   height: 100vh;
   width: 100vw;
   color: var(--color-text-primary);
+}
+
+.info {
+  background: var(--color-secondary-grad);
+  color: var(--color-text-secondary);
+}
+
+.error {
+  background: var(--color-error-bg);
+  color: var(--color-text-error);
+}
+.success {
+  background: var(--color-success-bg);
+  color: var(--color-text-success);
 }
 body {
   margin: 0;

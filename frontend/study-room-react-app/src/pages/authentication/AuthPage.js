@@ -53,7 +53,9 @@ const AuthPage = (props) => {
     if (Object.keys(errors).length > 0) return;
     axios
       .post("http://localhost:8000/users/signup", signupData)
-      .then((res) => alert(JSON.stringify(res.data)))
+      .then((res) =>
+        openSnackBar(notifDispatch, "Welcome to StudyRoom =)", "success")
+      )
       .catch((err) => {
         const errors = handleAuthRequestError(err.response, notifDispatch);
         setSignupErrors(errors);
@@ -70,11 +72,10 @@ const AuthPage = (props) => {
       password: loginData.password,
     })
       .then((response) => {
-        if (response) {
-          alert("AAAAAAAAAA " + localStorage.getItem("token"));
-        }
+        openSnackBar(notifDispatch, "You are now logged in!", "success");
       })
       .catch((err) => {
+        console.error(err);
         const errors = handleAuthRequestError(err.response, notifDispatch);
         setLoginErrors(errors);
       });
@@ -102,14 +103,16 @@ const AuthPage = (props) => {
 
 const handleAuthRequestError = (errorResponse, notifDispatch) => {
   let errors = {};
-  if (errorResponse.status < 500) {
+  if (errorResponse?.status < 500) {
     errors = errorResponse.data;
-  } else {
+  } else if (errorResponse) {
     openSnackBar(
       notifDispatch,
-      "Something bad happened " + errorResponse.status,
+      "Something bad happened :( " + errorResponse.status,
       "error"
     );
+  } else {
+    openSnackBar(notifDispatch, "Couldn't connect to the server :(", "error");
   }
 
   return errors;
