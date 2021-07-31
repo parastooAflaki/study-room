@@ -21,6 +21,7 @@ from  user import views
 urlpatterns = [
     path('users/signup', views.sign_up),
     path('users/login' , views.log_in),
+    path('users/validate/<str:token>' , views.validate, name='validateuser'),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
 ]
