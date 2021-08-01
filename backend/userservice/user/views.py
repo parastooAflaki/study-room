@@ -25,6 +25,7 @@ def sign_up(request, format=None):
         email_token_string = serializer.data["user_name"]+ "@" + uuid.uuid4().hex
         email_token = EmailToken()
         email_token.token = email_token_string
+        email_token.user_email = serializer.data["email"]
         email_token.save()
         current_site = get_current_site(request)
         mail_subject = 'Activate your blog account.'
@@ -74,5 +75,41 @@ def validate(request, token, format=None):
         user.is_validated = True
         user.save()
         return HttpResponseRedirect(f'{settings.FRONT_URL}validation/success')
+
+@api_view(['GET'])
+def resend_validation(request, email, format=None):
+    user = None
+    try :
+        user = User.objects.get(email=email)
+    except:
+        return Response("Email is not registered.", status=status.HTTP_404_NOT_FOUND)
+
+    if(user.is_validated):
+        return Response("User already validated", status=status.HTTP_400_BAD_REQUEST)
+
+    email_token = EmailToken.objects.get(user_email = email)
+
+    time_between_insertion = datetime.now() - email_token.created_at.replace(tzinfo=None)
+    if time_between_insertion.seconds / 60 < 3:
+        return Response("Email sent too recently, try again in " +  str(int(4- time_between_insertion.seconds / 60)) + " minutes", status=status.HTTP_400_BAD_REQUEST)
+    else:
+        email_token.created_at = datetime.now()
+        email_token_string = user.user_name + "@" + uuid.uuid4().hex
+        email_token.token = email_token_string
+        email_token.save()
+        current_site = get_current_site(request)
+        mail_subject = 'Activate your blog account.'
+        message = render_to_string('acc_active_email.html', {
+            'user': user,
+            'domain': current_site.domain,
+            'token':email_token_string,
+        })
+        to_email = user.email
+        email_package = EmailMessage(
+                mail_subject, message, to=[to_email]
+        )
+        email_package.send()
+        return Response("Validation mail sent/", status=status.HTTP_200_OK)
+
 
 

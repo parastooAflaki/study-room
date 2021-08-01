@@ -17,5 +17,6 @@ class User(models.Model):
                 super(User, self).save(*args, kargs)
 
 class EmailToken(models.Model):
+        user_email = models.CharField(max_length=255, default="")
         token = models.CharField(max_length=255)
         created_at = models.DateTimeField(auto_now_add=True)
