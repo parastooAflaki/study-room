@@ -1,0 +1,59 @@
+.validation-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+.validation-logo-container {
+  margin: 10px;
+  height: 80px;
+  width: 80px;
+  position: relative;
+}
+
+.validation-title {
+  margin: 25px;
+}
+
+.validation-text {
+  margin: 10px;
+}
+
+svg,
+.success-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.success-icon {
+  width: 70%;
+  height: 70%;
+  opacity: 0;
+  animation: fadeIn 0.5s linear forwards;
+  animation-delay: 0.5s;
+  color: var(--color-secondary-grad);
+}
+
+.filling-circle {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  stroke: var(--color-secondary-grad);
+  animation: stroke 2s ease-out forwards;
+  stroke-width: 2;
+  fill-opacity: 0;
+}
+
+@keyframes stroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}

@@ -6,6 +6,7 @@ import HomePage from "../pages/home/HomePage";
 import { useContext } from "react";
 import { AuthProvider } from "../context/authcontext/Contexts";
 import SnackBar from "../components/snackbars/SnackBar";
+import ValidationPage from "../pages/validation/ValidationPage";
 import { closeSnackBar } from "../context/notifcontext/Actions";
 import { NotifProvider, NotifContext } from "../context/notifcontext/Contexts";
 function App() {
@@ -28,6 +29,9 @@ const AppRoutes = () => {
         <Switch>
           <Route path="/auth">
             <AuthPage />
+          </Route>
+          <Route path="/validation/:status">
+            <ValidationPage />
           </Route>
           <Route path="/">
             <HomePage />

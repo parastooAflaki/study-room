@@ -11,6 +11,7 @@ import {
 } from "../../context/authcontext/Contexts";
 import { openSnackBar } from "../../context/notifcontext/Actions";
 import { NotifContext } from "../../context/notifcontext/Contexts";
+import SimpleCard from "../../components/cards/SimpleCard";
 import FormValidator from "../../utils/FormValidators";
 const AuthPage = (props) => {
   const [isSigningUp, setIsSigningUp] = useState(false);
@@ -82,10 +83,7 @@ const AuthPage = (props) => {
   };
 
   return (
-    <div
-      className={`auth-container ${isSigningUp ? "sign-up-active" : ""}`}
-      id="container"
-    >
+    <SimpleCard className={`${isSigningUp ? "sign-up-active" : ""}`}>
       <SignUpForm
         setData={setSignupDataValue}
         onSubmit={onSubmitSignUp}
@@ -97,7 +95,7 @@ const AuthPage = (props) => {
         errors={loginErrors}
       />
       <AuthOverlay goRight={closeSignUp} goLeft={openSignUp} />
-    </div>
+    </SimpleCard>
   );
 };
 

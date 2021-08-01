@@ -6,7 +6,7 @@
   height: 100%;
   overflow: hidden;
   transition: transform 0.6s ease-in-out;
-  z-index: 4;
+  z-index: 6;
 }
 
 .sign-up-active .auth-overlay-container {
