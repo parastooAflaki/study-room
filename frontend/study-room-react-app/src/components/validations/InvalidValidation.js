@@ -13,7 +13,7 @@ const InvalidValidation = (props) => {
   return (
     <div className="validation-page-container">
       <div className="validation-logo-container">
-        <svg height="100%" width="100%">
+        <svg className="validation-svg" height="100%" width="100%">
           <circle class="filling-circle" cx="50%" cy="50%" r="45%" />
         </svg>
         <FaTimes class="success-icon" />

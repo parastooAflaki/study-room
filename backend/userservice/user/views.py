@@ -91,7 +91,7 @@ def resend_validation(request, email, format=None):
 
     time_between_insertion = datetime.now() - email_token.created_at.replace(tzinfo=None)
     if time_between_insertion.seconds / 60 < 3:
-        return Response("Email sent too recently, try again in " +  str(int(4- time_between_insertion.seconds / 60)) + " minutes", status=status.HTTP_400_BAD_REQUEST)
+        return Response("Email sent recently, try again in " +  str(int(4- time_between_insertion.seconds / 60)) + "m", status=status.HTTP_400_BAD_REQUEST)
     else:
         email_token.created_at = datetime.now()
         email_token_string = user.user_name + "@" + uuid.uuid4().hex
@@ -109,7 +109,7 @@ def resend_validation(request, email, format=None):
                 mail_subject, message, to=[to_email]
         )
         email_package.send()
-        return Response("Validation mail sent/", status=status.HTTP_200_OK)
+        return Response("Validation mail sent", status=status.HTTP_200_OK)
 
 
 

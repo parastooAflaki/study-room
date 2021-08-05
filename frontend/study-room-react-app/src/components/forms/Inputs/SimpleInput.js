@@ -2,7 +2,7 @@ import "./Inputs.css";
 import StringUtils from "../../../utils/StringUtils";
 const SimpleInput = (props) => {
   return (
-    <div className="input-container">
+    <div className={`input-container ${props.className}`}>
       <input
         className={"text-input " + (props.error ? "error" : "")}
         placeholder={props.placeholder}

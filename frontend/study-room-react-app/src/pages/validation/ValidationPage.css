@@ -20,7 +20,7 @@
   margin: 10px;
 }
 
-svg,
+.validation-svg,
 .success-icon {
   position: absolute;
   top: 50%;
@@ -56,4 +56,8 @@ svg,
   to {
     opacity: 1;
   }
+}
+.resendmail-input {
+  width: 30%;
+  margin: 20px;
 }
