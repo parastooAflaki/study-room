@@ -44,17 +44,71 @@ class LogInSerializer(serializers.Serializer):
             user = User.objects.get(email= email)
         except User.DoesNotExist:
             raise serializers.ValidationError(
-                'User with given email does not exists' 
+                {"email":'User with given email does not exists'}
             )
         retrieved_password = user.password
         pwd_valid = check_password(password, retrieved_password)
         if pwd_valid :
             return user
         raise serializers.ValidationError(
-            'Wrong password!'
+            {"password": 'Wrong password!'}
         )
 
     def validate(self , data):
             print(data.keys())
             user = self.authenticate( data)
             return user
+
+
+
+class RequestResetPasswordSerilizer(serializers.Serializer):
+    user_name = serializers.CharField()
+    email = serializers.EmailField()
+
+    def authenticate(self , data):
+        user_name = data.get("user_name" , None)
+        email = data.get("email" , None)
+        if email == None:
+            try:
+                user = User.objects.get(user_name= user_name)
+                email = user.email
+            except User.DoesNotExist:
+                raise serializers.ValidationError(
+                    {"user_name":'User does not exist'}
+             )
+        elif user_name == None:
+            try:
+                user = User.objects.get(email= email)
+                user_name = user.username
+                return user
+            except User.DoesNotExist:
+                raise serializers.ValidationError(
+                    {"email":'User does not exist'}
+         )
+        else:
+            user = User.objects.get(email= email)
+            user_name = user.user_name
+            return user
+
+    def validate(self , data):
+        print(data.keys())
+        user = self.authenticate(data)
+        return user  
+
+class ResponseRequestResetPasswordSerilizer(serializers.Serializer):
+    user_name = serializers.CharField()
+    email = serializers.EmailField()
+
+class ResetPasswordSerilizer(serializers.Serializer):
+    new_password  = serializers.CharField(max_length=255)
+class ResponseResetPasswordSerilizer(serializers.Serializer):
+    new_password  = serializers.CharField(max_length=255)
+    def validate(self, data):
+        print(data.keys())
+        return data
+
+class FindedUsersSerializer(serializers.ModelSerializer):
+    user_name = serializers.CharField(max_length = 255)
+    class Meta:
+        model = User
+        fields = ['user_name']

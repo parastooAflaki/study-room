@@ -21,6 +21,13 @@ from  user import views
 urlpatterns = [
     path('users/signup', views.sign_up),
     path('users/login' , views.log_in),
+    path('users/validate/<str:token>' , views.validate, name='validateuser'),
+    #path('users/searchusers/?<int:page>/?<int:limit>/?<str:searched_term>', views.search_users),
+    path('users/searchusers' , views.search_users),
+    path('users/requestresetpassword', views.requestresetpassword , name = 'request reset_password'),
+    path('users/resetpassword/<str:token>', views.resetpassword , name = 'resetpassword'),
+    path('users/revalidate/<str:email>' , views.resend_validation, name='revalidateuser'),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
+  
 ]

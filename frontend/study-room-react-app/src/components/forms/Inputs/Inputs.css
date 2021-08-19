@@ -1,0 +1,79 @@
+.password-container {
+  position: relative;
+  width: 100%;
+  margin: 8px 0;
+}
+.input-container {
+  position: relative;
+  width: 100%;
+
+  margin: 8px 0;
+}
+.password-eye {
+  position: absolute;
+  color: var(--color-text-primary);
+  width: 20px;
+  height: 20px;
+  right: 10px;
+  top: 30%;
+}
+.password-input {
+  width: 100%;
+}
+.text-input {
+  width: 100%;
+}
+input {
+  background-color: var(--color-input);
+  border: none;
+  padding: 12px 15px;
+  color: var(--color-text-primary);
+  border-radius: 5px;
+}
+input::placeholder {
+  color: var(--color-text-placeholder);
+  opacity: 1;
+}
+
+input:-ms-input-placeholder {
+  color: var(--color-text-placeholder);
+}
+
+input::-ms-input-placeholder {
+  color: var(--color-text-placeholder);
+}
+.row-input {
+  display: flex;
+  justify-content: space-be;
+}
+.row-input-inner {
+  margin-right: 8px;
+}
+
+.input-error-tooltip {
+  text-align: center;
+  position: absolute;
+  background: var(--color-primary);
+  color: var(--color-text-primary);
+  padding: 0.2em;
+  border-radius: 10px;
+  font-size: 0.7em;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  z-index: 5;
+  left: 0;
+  top: -0.8rem;
+  border: 1px solid #b85a5a;
+  box-shadow: 1px 2px 8px rgba(0, 0, 100, 0.2);
+  opacity: 1;
+  transition: ease-in;
+  width: 100%;
+  white-space: nowrap;
+}
+
+input.error {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #b85a5a;
+  background-color: #f3cfcf;
+}
