@@ -2,22 +2,32 @@ from django.db import models
 from django.contrib.auth.hashers import make_password
 
 # Create your models here.
-class User(models.Model):
-        email = models.EmailField(unique=True)
-        password = models.CharField(max_length=255)
-        user_name = models.CharField(max_length= 255, unique=True)
-        first_name = models.CharField(max_length= 255)
-        last_name = models.CharField(max_length=255)
-        created_at = models.DateTimeField(auto_now_add=True)
-        updated_at = models.DateTimeField(auto_now=True)
-        is_validated = models.BooleanField(default=False)
 
-        def save(self, *args, **kargs):
-                self.password =  make_password(self.password)
-                super(User, self).save(*args, kargs)
+
+class User(models.Model):
+    email = models.EmailField(unique=True)
+    password = models.CharField(max_length=255)
+    user_name = models.CharField(max_length=255, unique=True)
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    is_validated = models.BooleanField(default=False)
+
+    def save(self, *args, **kargs):
+        if "force_insert" in kargs and kargs["force_insert"]:
+            print(kargs)
+            print(self.password)
+            self.password = make_password(self.password)
+            print(self.password)
+
+        super(User, self).save(*args, kargs)
+
+    def __str__(self):
+        return self.email
 
 
 class EmailToken(models.Model):
-        user_email = models.CharField(max_length=255, default="")
-        token = models.CharField(max_length=255)
-        created_at = models.DateTimeField(auto_now_add=True)
+    user_email = models.CharField(max_length=255, default="")
+    token = models.CharField(max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True)
