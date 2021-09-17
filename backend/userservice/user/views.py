@@ -53,7 +53,7 @@ def sign_up(request, format=None):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['Post'])
+@api_view(['POST'])
 def log_in(request, format=None):
     serializer = LogInSerializer(data=request.data)
     if serializer.is_valid():

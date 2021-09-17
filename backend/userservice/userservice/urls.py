@@ -32,6 +32,8 @@ urlpatterns = [
     path('users/revalidate/<str:email>',
          views.resend_validation, name='revalidateuser'),
     path('friends/', friendViews.getallfriends, name='getallfriends'),
+    path('friends/invite', friendViews.addfriend, name='addfriend'),
+    path('friends/accept', friendViews.acceptfriend, name='acceptfriend'),
 
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
