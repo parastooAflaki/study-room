@@ -125,3 +125,10 @@ class FindedUsersSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['user_name']
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        exclude = ('password',)

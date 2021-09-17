@@ -6,7 +6,7 @@ from rest_framework import permissions
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import SignUpSerializer, UserSerializer, LogInSerializer, RequestResetPasswordSerilizer, ResponseRequestResetPasswordSerilizer, ResetPasswordSerilizer, ResponseResetPasswordSerilizer
+from .serializers import ProfileSerializer, SignUpSerializer, UserSerializer, LogInSerializer, RequestResetPasswordSerilizer, ResponseRequestResetPasswordSerilizer, ResetPasswordSerilizer, ResponseResetPasswordSerilizer
 from .serializers import FindedUsersSerializer
 import jwt
 from datetime import timedelta, datetime
@@ -17,6 +17,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.http import HttpResponseRedirect
 from django.conf import settings
 from django.core import serializers
+from userservice.middlewares import auth
 
 
 @api_view(['POST'])
@@ -213,3 +214,12 @@ def search_users(request, format=None):
         return HttpResponse(response_serializer.data, status=status.HTTP_200_OK)
     else:
         return HttpResponse(response_serializer.errors, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+@api_view(['GET'])
+@auth
+def profile(request, format=None):
+    user_email = request.user["email"]
+    user = User.objects.get(email=user_email)
+    response_serializer = ProfileSerializer(user)
+    return Response(response_serializer.data, status=status.HTTP_200_OK)

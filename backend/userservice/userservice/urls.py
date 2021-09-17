@@ -25,6 +25,8 @@ urlpatterns = [
     path('users/validate/<str:token>', views.validate, name='validateuser'),
     #path('users/searchusers/?<int:page>/?<int:limit>/?<str:searched_term>', views.search_users),
     path('users/searchusers', views.search_users),
+    path('users/profile', views.profile),
+
     path('users/requestresetpassword', views.requestresetpassword,
          name='request reset_password'),
     path('users/resetpassword/<str:token>',
